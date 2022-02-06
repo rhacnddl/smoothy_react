@@ -11,10 +11,19 @@ const InputBox = Styled.input`
 
 interface Props {
   readonly placeholder?: string;
+  readonly value?: string;
+  readonly onChange?: (text: string) => void;
 }
 
-export const Input = ({ placeholder }:Props) => {
+export const Input = ({ placeholder, onChange, value }: Props) => {
   return (
-    <InputBox placeholder={placeholder}/>
+    <InputBox
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => {
+          if (typeof onChange === 'function') {
+            onChange(e.target.value);
+          }
+        }}/>
   );
 }
