@@ -1,21 +1,23 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import App from './App'
 
-describe('<App />', () => {
+/* toHaveStyleRule 이라는 Matcher를 제공함으로써 styled-components 를 좀 더 자세히 테스트 O */
+import 'jest-styled-components'
+
+import { Button } from "Components";
+
+describe('<Button />', () => {
   it('renders component correctly', () => {
-	const { container } = render(<App />);
+		const { container } = render(<Button label="Button Test" />)
+		const label = screen.getByText('Button Test')
 
-	const linkElement = screen.getByText(/learn react/i);
-	expect(linkElement).toBeInTheDocument();
+		expect(label).toBeInTheDocument()
 
-	const appLogo = screen.getByAltText('logo');
-	expect(appLogo).toBeInTheDocument();
-	expect(appLogo).toHaveAttribute('src', 'logo.svg');
+		const parent = label.parentElement
 
-	expect(container.getElementsByTagName('p')).toHaveLength(1);
-	expect(container.getElementsByTagName('p')[0]).toHaveTextContent('Edit src/App.tsx and save to reload');
-
-	expect(container).toMatchSnapshot();
-  });
-});
+		expect(parent).toHaveStyleRule('background-color', '#304FFE');
+		expect(parent).toHaveStyleRule('background-color', '#1E40FF', {modifier: ':hover'})
+		expect(container).toMatchSnapshot()
+	})
+})

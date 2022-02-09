@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Styled from 'styled-components';
+import React, { useState } from 'react'
+import Styled from 'styled-components'
 
-import { Button, Input, ToDoItem } from 'Components';
+import { Button, Input, ToDoItem } from 'Components'
 
 const Container = Styled.div`
   min-height: 100vh;
@@ -9,7 +9,7 @@ const Container = Styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
+`
 
 const Contents = Styled.div`
   display: flex;
@@ -18,11 +18,11 @@ const Contents = Styled.div`
   padding: 20px;
   border-radius: 8px;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
-`;
+`
 
 const InputContainer = Styled.div`
   display: flex;
-`;
+`
 
 const ToDoListContainer = Styled.div`
   min-width: 350px;
@@ -30,7 +30,7 @@ const ToDoListContainer = Styled.div`
   overflow-y: scroll;
   border: 1px solid #BDBDBD;
   margin-bottom: 20px;
-`;
+`
 
 function App() {
   //const arr = useState(데이터 초기값)
@@ -72,7 +72,7 @@ function App() {
         </InputContainer>
       </Contents>
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App
